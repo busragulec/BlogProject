@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntitiyFramework;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,11 @@ namespace BlogProject.Controllers
 {
     public class AboutController : Controller
     {
+        AboutManager abm = new AboutManager(new EfAboutRepository());
         public IActionResult Index()
         {
-            return View();
+            var values = abm.GetList();
+            return View(values);
         }
         public PartialViewResult SocialMediaAbout()
         {
