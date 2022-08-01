@@ -12,7 +12,10 @@ namespace BlogProject.Controllers
     public class Category : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
-     public IActionResult Index()
+
+        public bool CategoryStatus { get; internal set; }
+
+        public IActionResult Index()
         {
             var values = cm.GetList();
             return View(values);
