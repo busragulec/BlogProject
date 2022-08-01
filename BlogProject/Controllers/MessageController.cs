@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntitiyFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,16 +8,22 @@ using System.Linq;
 using System.Text;
 
 
-namespace BlogProject.ViewComponents.Writer
+namespace BlogProject.Controllers
 {
-    public class WriterMessageNotification : ViewComponent
+    [AllowAnonymous]
+    public class MessageController : Controller
     {
         Message2Manager mm = new Message2Manager(new EfMessage2Repository());
-        public IViewComponentResult Invoke()
+        public IActionResult InBox()
         {
             int id = 2;
             var values = mm.GetInboxListByWriter(id);
             return View(values);
+        }
+        public IActionResult MessageDetails(int id)
+        {
+            var value = mm.TGetById(id);
+            return View(value);
         }
     }
 }
