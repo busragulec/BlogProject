@@ -5,22 +5,20 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Project Status</h4>
+                <h4 class="card-title">KATEGORİ DURUMU</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th> # </th>
-                                <th> Kategori Adı </th>
-                                <th> Durum </th>
-                                <th> İşlemler </th>
+                            <tr>                             
+                                <th> KATEGORİ ADI </th>
+                                <th> DURUM </th>
+                                <th> İŞLEMLER </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td> @item.CategoryId </td>
+                            <tr>                              
                                 <td> @item.CategoryName </td>
                                 <td> @item.CategoryStatus </td>
                                 <td>

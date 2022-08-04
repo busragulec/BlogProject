@@ -8,18 +8,14 @@
 <h1>Yazarın Blogları</h1>
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Blog Başlığı</th>
-        <th>Oluşturma Tarihi</th>
-        <th>Kategori</th>
-        <th>Durum</th>
-        <th>Sil</th>
-        <th>Düzenle</th>
+        <th>BLOG BAŞLIĞI</th>
+        <th>TARİH</th>
+        <th>KATEGORİ</th>
+        <th>DURUM</th>
     </tr>
     @foreach(var item in Model)
             {
         <tr>
-            <th>@item.BlogID</th>
             <td>@item.BlogTitle</td>
             <td>
                 @(((DateTime)
@@ -32,5 +28,6 @@
         </tr>
             }
 </table>
+<br />
 <a href="/Blog/BlogAdd/" class="btn btn-primary">Yeni Blog Oluştur</a>
 

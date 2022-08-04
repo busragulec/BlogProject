@@ -5,20 +5,53 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Bildirimler</h1>
+@*<h1>Bildirimler</h1>
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
         <th>Bildirim</th>
         <th>Tarih</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.NotificationID</td>
             <td>@item.NotificationDetails</td>
             <td>@item.NotificationDate.ToShortDateString()</td>
         </tr>
     }
-</table>
+</table>*@
 
+
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+
+                <i class="mdi mdi-call-merge menu-icon"></i>
+            </span>BİLDİRİMLER
+        </h3>
+
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <table class="table fa-tablet-alt">
+                        <tr>
+                            <th>BİLDİRİM</th>
+                            <th>TARİH</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.NotificationDetails</td>
+                                <td>@item.NotificationDate.ToShortDateString()</td>
+                            </tr>
+                        }
+                    </table>                   
+                </form>
+            </div>
+        </div>
+    </div>
+}
