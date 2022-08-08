@@ -20,8 +20,9 @@ namespace BlogProject.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         Context c = new Context();
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
+            var response = bm.GetSearchingData(search);
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }

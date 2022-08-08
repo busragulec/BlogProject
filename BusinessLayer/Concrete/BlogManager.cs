@@ -26,6 +26,11 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListWithCategoryByWriter(id);
         }
 
+        public List<Blog> GetSearchingData(string searchData)
+        {
+            return _blogDal.GetSearchingData(searchData);
+        }
+
         public Blog TGetById(int id)
         {
             return _blogDal.GetByID(id);

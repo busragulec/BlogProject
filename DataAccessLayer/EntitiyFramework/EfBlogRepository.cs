@@ -27,5 +27,16 @@ namespace DataAccessLayer.EntitiyFramework
                 return c.Blogs.Include(x => x.Category).Where(x => x.WriterID == id).ToList();
             }
         }
+
+
+        public List<Blog> GetSearchingData(string search)
+        {
+            using (var c = new Context())
+            {
+                var response = c.Blogs.Where(x => x.BlogContent.Contains(search)).ToList();
+                return response;
+
+            }
+        }
     }
 }

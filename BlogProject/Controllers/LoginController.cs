@@ -26,7 +26,7 @@ namespace BlogProject.Controllers
         {
             Context c = new Context();
             var datavalue = c.Writers.FirstOrDefault(x => x.WriterMail == p.WriterMail && x.WriterPassword == p.WriterPassword);
-            if(datavalue != null)
+            if (datavalue != null)
             {
                 var claims = new List<Claim>
                 {
@@ -35,12 +35,12 @@ namespace BlogProject.Controllers
                 var useridentity = new ClaimsIdentity(claims, "a");  /*Herhangi bir değer göndermesen sisteme authendication olmaz.*/
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Dashboard", new { writerId = datavalue.WriterID });
             }
             else
             {
                 return View();
             }
-        }        
+        }
     }
 }
