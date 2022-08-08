@@ -9,8 +9,10 @@
 <html lang="zxx">
 
 <body>
-    <section class="main-content-w3layouts-agileits">
+   
         <div class="container">
+            <br />
+            <br />
             <h3 class="tittle">Hakkımızda</h3>
             <div class="row inner-sec">
                 
@@ -31,7 +33,7 @@
                            @item.AboutDetails1
                         </p>
                         }
-                        <a href="single.html" class="btn btn-primary read-m">Read More</a>
+                        
                     </div>
                     
                 </div>
@@ -43,20 +45,23 @@
                         <h4>
                             Mail Bültenine Abone Olun
                         </h4>
-                      
+
                         @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+                        <div class="tech-btm">
+
+                            @await Component.InvokeAsync("WriterLastBlog")
+                        </div>
+                        <br />
+                        <br />
                         @await Html.PartialAsync("~/Views/About/SocialMediaAbout.cshtml")
 
 
-                    <div class="tech-btm">
-                     
-                        @await Component.InvokeAsync("WriterLastBlog")
-                    </div>
+
                     </div>
 
                 </aside>
             </div>
         </div>
-    </section>
+ 
 </body>
 </html>

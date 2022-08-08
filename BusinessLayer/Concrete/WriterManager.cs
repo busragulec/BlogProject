@@ -19,6 +19,11 @@ namespace BusinessLayer.Concrete
             _writerdal = writerdal;
         }
 
+        public List<Writer> GetList(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Writer> GetList()
         {
             throw new NotImplementedException();

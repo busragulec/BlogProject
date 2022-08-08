@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Mesaj Detay Sayfası</h1>
+@*<h1>Mesaj Detay Sayfası</h1>
 <br />
 @Html.Label("Mesaj ID")
 @Html.TextBoxFor(x => x.MessageID, new { @class = "form-control" })
@@ -13,8 +13,37 @@
 @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
 <br />
 @Html.Label("Mesaj İçeriği")
-@Html.TextAreaFor(x => x.MessageDetails,10,3, new { @class = "form-control" })
+@Html.TextAreaFor(x => x.MessageDetails, 10, 3, new { @class = "form-control" })
 <br />
-<button class="btn btn-success">Mesajlara Dön</button>
+<button class="btn btn-success">Mesajlara Dön</button>*@
 
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+
+                <i class="mdi mdi-message menu-icon"></i>
+            </span>MESAJ DETAY SAYFASI
+        </h3>
+
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+
+                    @Html.Label("Mesaj ID")
+                    @Html.TextBoxFor(x => x.MessageID, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Mesaj Başlığı")
+                    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Mesaj İçeriği")
+                    @Html.TextAreaFor(x => x.MessageDetails, 10, 3, new { @class = "form-control" })
+                    <br />
+                    <td><a href="/Message/InBox/" class="btn btn-primary">Mesajlara Dön</a></td>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
 

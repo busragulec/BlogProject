@@ -5,7 +5,53 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Yazarın Blogları</h1>
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </span>YAZARIN BLOGLARI
+        </h3>
+
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <table class="table fa-tablet-alt">
+                        <tr>
+                            <th>BLOG BAŞLIĞI</th>
+                            <th>TARİH</th>
+                            <th>KATEGORİ</th>
+                            <th>DURUM</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.BlogTitle</td>
+                                <td>
+                                    @(((DateTime)
+                                item.BlogCreateDate).ToString("dd-MMM-yyyy"))
+                                </td>
+                                <td>@item.Category.CategoryName</td>
+                                <td>@item.BlogStatus</td>
+                                <td><a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-danger">Sil</a></td>
+                                <td><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-warning">Düzenle</a></td>
+                            </tr>
+                        }
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@*<h1>Yazarın Blogları</h1>
 <table class="table table-bordered">
     <tr>
         <th>BLOG BAŞLIĞI</th>
@@ -13,8 +59,8 @@
         <th>KATEGORİ</th>
         <th>DURUM</th>
     </tr>
-    @foreach(var item in Model)
-            {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>@item.BlogTitle</td>
             <td>
@@ -26,8 +72,8 @@
             <td><a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-danger">Sil</a></td>
             <td><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-warning">Düzenle</a></td>
         </tr>
-            }
+    }
 </table>
 <br />
-<a href="/Blog/BlogAdd/" class="btn btn-primary">Yeni Blog Oluştur</a>
+<a href="/Blog/BlogAdd/" class="btn btn-primary">Yeni Blog Oluştur</a>*@
 

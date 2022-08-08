@@ -5,14 +5,59 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Gelen Kutusu</h1>
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+
+                <i class="mdi mdi-message menu-icon"></i>
+            </span>GELEN KUTUSU
+        </h3>
+
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <table class="table fa-tablet-alt">
+                        <tr>
+                            <th>~~</th>
+                            <th>KONU</th>
+                            <th>GÖNDEREN</th>
+                            <th>TARİH</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <th>@item.MessageID</th>
+                        <td>@item.Subject</td>
+                        <td>@item.SenderUser.WriterName</td>
+
+                        <td>
+                            @(((DateTime)
+                                item.MessageDate).ToString("dd-MMM-yyyy"))
+                        </td>
+                        <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-warning">Mesajı Aç</a></td>
+                    </tr>
+                        }
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@*<h1>Gelen Kutusu</h1>
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Konu</th>
-        <th>Gönderen</th>
-        <th>Tarih</th>
-        <th>Mesajı Aç</th>
+        <th>~~</th>
+        <th>KONU</th>
+        <th>GÖNDEREN</th>
+        <th>TARİH</th>
 
     </tr>
     @foreach (var item in Model)
@@ -29,8 +74,7 @@
             <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-warning">Mesajı Aç</a></td>
         </tr>
     }
-</table>
-<a href="/Blog/BlogAdd/" class="btn btn-primary">Yeni Mesaj Oluştur</a>
+</table>*@
 
 
 

@@ -4,7 +4,51 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Blog Düzenleme Sayfası</h1>
+
+@using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
+{
+    <div class="page-header">
+        <h3 class="page-title">
+            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </span>BLOG DÜZENLEME SAYFASI
+        </h3>
+
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+
+                    @Html.Label("Blog ID")
+                    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Blog Başlığı")
+                    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Blog Thumnail Url")
+                    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Blog Görseli")
+                    @Html.TextBoxFor(x => x.BlogImages, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Blog Kategori")
+                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                    <br />
+                    @Html.Label("Blog İçeriği")
+                    @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control" })
+                    <br />
+                    <button class="btn btn-success">Güncelle</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+
+@*<h1>Blog Düzenleme Sayfası</h1>
 <br />
 @using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
 {
@@ -27,5 +71,5 @@
     @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control" })
     <br />
     <button class="btn btn-success">Güncelle</button>
-}
+}*@
 
