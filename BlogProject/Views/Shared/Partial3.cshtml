@@ -14,47 +14,83 @@
             </div>
             <!-- subscribe -->
             <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">
-                <h2>Mail Bültenine Abone Olun</h2>
-                @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
+                @*<h2>Mail Bültenine Abone Olun</h2>
+        @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")*@
                 <!-- //subscribe -->
+
+
+                <div class="tech-btm widget_social">
+                    <h3>Sosyal Medya Hesaplarımız</h3>
+                    <ul>
+
+                        <li>
+                            <a class="twitter" href="https://twitter.com/">
+                                <i class="fab fa-twitter"></i>
+                                <span class="count"></span> TWİTTER
+                            </a>
+                        </li>
+                        <li>
+                            <a class="facebook" href="https://tr-tr.facebook.com/">
+                                <i class="fab fa-facebook-f"></i>
+                                <span class="count"></span> FACEBOOK
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dribble" href="https://www.linkedin.com/">
+                                <i class="fab fa-linkedin"></i>
+
+                                <span class="count"></span> LİNKEDİN
+                            </a>
+                        </li>
+                        <li>
+                            <a class="pin" href="https://github.com/">
+                                <i class="fab fa-github"></i>
+                                <span class="count"></span> GİTHUB
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
             </div>
         </div>
         <!-- footer -->
         <div class="footer-cpy text-center">
             <div class="footer-social">
                 <div class="copyrighttop">
-                    <ul>
-                        <li class="mx-3">
-                            <a class="facebook" href="https://tr-tr.facebook.com/">
-                                <i class="fab fa-facebook-f"></i>
-                                <span>Facebook</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="facebook" href="https://twitter.com/">
-                                <i class="fab fa-twitter"></i>
-                                <span>Twitter</span>
-                            </a>
-                        </li>
-                        <li class="mx-3">
-                            <a class="facebook" href="https://www.google.com/">
-                                <i class="fab fa-google-plus-g"></i>
-                                <span>Google+</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="facebook" href="https://www.linkedin.com/">
-                                <i class="fab fa-linkedin-in"></i>
-                                <span>Linkedin</span>
-                            </a>
-                        </li>
-                    </ul>
-
+                    @*<ul>
+            <li class="mx-3">
+                <a class="facebook" href="https://tr-tr.facebook.com/">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a class="facebook" href="https://twitter.com/">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+            </li>
+            <li class="mx-3">
+                <a class="facebook" href="https://www.google.com/">
+                    <i class="fab fa-google-plus-g"></i>
+                    <span>Google+</span>
+                </a>
+            </li>
+            <li>
+                <a class="facebook" href="https://www.linkedin.com/">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>Linkedin</span>
+                </a>
+            </li>
+        </ul>*@
+                    © @DateTime.Now.Year Asp.Net Core 5.0. Tüm Hakları Saklıdır.
                 </div>
             </div>
             <div class="w3layouts-agile-copyrightbottom">
                 <p>
-                    © @DateTime.Now.Year Asp.Net Core 5.0. Tüm Hakları Saklıdır. | Tarafından düzenlendi. @*Şu an ki yılı verir*@
+                    Tarafından düzenlendi. @*Şu an ki yılı verir*@
                     <a href="https://www.linkedin.com/in/b%C3%BC%C5%9Fra-g%C3%BCle%C3%A7-3b5b28211/">Büşra Güleç</a>
                 </p>
             </div>
