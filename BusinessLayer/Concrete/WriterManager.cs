@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-  public class WriterManager : IWriterService
+    public class WriterManager : IWriterService
     {
         IWriterDal _writerdal;
 
@@ -21,12 +21,12 @@ namespace BusinessLayer.Concrete
 
         public List<Writer> GetList(int id)
         {
-            throw new NotImplementedException();
+            return _writerdal.GetListAll();
         }
 
         public List<Writer> GetList()
         {
-            throw new NotImplementedException();
+            return _writerdal.GetListAll();
         }
 
         public List<Writer> GetWriterById(int id)
@@ -46,12 +46,13 @@ namespace BusinessLayer.Concrete
 
         public Writer TGetById(int id)
         {
-           return _writerdal.GetByID(id);
+            return _writerdal.GetByID(id);
         }
 
         public void TUpdate(Writer t)
         {
             _writerdal.Update(t);
         }
+
     }
 }

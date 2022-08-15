@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace BlogProject.Controllers
 {
     public class CommentController : Controller
@@ -18,11 +17,13 @@ namespace BlogProject.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public PartialViewResult PartialAddComment()
         {
             return PartialView();
         }
+
         [HttpPost]
         public PartialViewResult PartialAddComment(Comment p)
         {
@@ -32,6 +33,7 @@ namespace BlogProject.Controllers
             cm.CommentAdd(p);
             return PartialView();
         }
+
         public PartialViewResult CommentListByBlog(int id)
         {
             var values = cm.GetList(id);

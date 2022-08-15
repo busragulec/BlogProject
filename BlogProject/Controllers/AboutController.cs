@@ -16,6 +16,7 @@ namespace BlogProject.Controllers
             var values = abm.GetList();
             return View(values);
         }
+
         public PartialViewResult SocialMediaAbout()
         {
             return PartialView();

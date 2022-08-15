@@ -1,8 +1,7 @@
 ﻿@using EntityLayer.Concrete
 @model List<Blog>
-
 <div class="tech-btm">
-    <h3>Son Gönderiler</h3>
+    <h3>Bazı Gönderiler</h3>
     @foreach (var item in Model)
     {
         <div class="blog-grids row mb-3">
@@ -11,14 +10,7 @@
                     <img src="@item.BlogImages" class="card-img-top img-fluid" alt="">
                 </a>
             </div>
-
             <div class="col-md-7 blog-grid-right">
-                <h5>
-                    <a href="/Blog/BlogReadAll/@item.BlogID">
-                        @item.BlogTitle.Substring(
-                             0, item.BlogTitle.Substring(0, 20).LastIndexOf(" "))...
-                    </a>
-                </h5>
                 <h5>
                     <a href="/Blog/BlogReadAll/@item.BlogID">
                         @item.BlogContent.Substring(
@@ -32,7 +24,6 @@
                     </span>
                 </div>
             </div>
-
         </div>
     }
 </div>

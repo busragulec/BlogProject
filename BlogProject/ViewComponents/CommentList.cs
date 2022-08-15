@@ -5,12 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace BlogProject.ViewComponents
 {
     public class CommentList : ViewComponent
     {
-      public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke()
         {
             var commentvalues = new List<UserComment>
             {

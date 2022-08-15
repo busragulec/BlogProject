@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
 {
-   public class WriterValidator : AbstractValidator<Writer>
+    public class WriterValidator : AbstractValidator<Writer>
     {
         public WriterValidator()
         {
@@ -17,7 +17,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.WriterPassword).NotEmpty().WithMessage("Şifre boş geçilemez.");
             RuleFor(x => x.WriterName).MinimumLength(2).WithMessage("Lütfen en az 2 kararkter girişi yapınız.");
             RuleFor(x => x.WriterName).MaximumLength(50).WithMessage("Lütfen en fazla 50 kararkter girişi yapınız.");
-          
+
         }
     }
 }

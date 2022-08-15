@@ -3,15 +3,16 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntitiyFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace BlogProject.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
@@ -26,14 +27,14 @@ namespace BlogProject.Controllers
         {
             WriterValidator Wv = new WriterValidator();
             ValidationResult result = Wv.Validate(p);
-            if(result.IsValid)
+            if (result.IsValid)
             {
                 p.WriterStatus = true;
                 p.WriterAbout = "Deneme Test";
                 wm.TAdd(p);
                 return RedirectToAction("Index", "Dashboard");
             }
-           else
+            else
             {
                 foreach (var item in result.Errors)
                 {

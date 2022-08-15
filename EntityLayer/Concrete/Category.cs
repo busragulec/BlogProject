@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-   public class Category
+    public class Category
     {
         [Key]
         //Erişim Belirleyici Türü Değişken Türü İsim {get set}

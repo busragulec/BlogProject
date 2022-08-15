@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-   public class AdminManager : IAdminService
+    public class AdminManager : IAdminService
     {
         IAdminDal _Admmindal;
 

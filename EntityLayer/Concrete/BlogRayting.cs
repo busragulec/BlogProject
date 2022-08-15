@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-   public class BlogRayting
+    public class BlogRayting
     {
         [Key]
         public int BlogRaytinhID { get; set; }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace BlogProject.ViewComponents.Category
 {
     public class CategoryList : ViewComponent
@@ -18,5 +17,5 @@ namespace BlogProject.ViewComponents.Category
             return View(values);
         }
     }
-    
+
 }

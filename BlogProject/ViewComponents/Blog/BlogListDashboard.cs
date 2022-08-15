@@ -16,5 +16,5 @@ namespace BlogProject.ViewComponents.Blog
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }
-    }   
+    }
 }

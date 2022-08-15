@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BlogProject.Models
 {
-    public class AddProfileImage 
+    public class AddProfileImage
     {
         public int WriterID { get; set; }
         public string WriterName { get; set; }

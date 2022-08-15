@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-   public interface IGenericDal<T> where T : class
+    public interface IGenericDal<T> where T : class
     {
         //Amacı Diğer interfacelerin içerisinde tek tek tanımlamak
         void Insert(T t);
@@ -15,7 +15,6 @@ namespace DataAccessLayer.Abstract
         void Update(T t);
         List<T> GetListAll();
         T GetByID(int id);
-
         List<T> GetListAll(Expression<Func<T, bool>> filter);
 
     }

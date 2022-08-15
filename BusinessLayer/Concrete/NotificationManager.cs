@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public List<Notification> GetList()
         {
-          return _notificaonDal.GetListAll();
+            return _notificaonDal.GetListAll();
         }
 
         public void TAdd(Notification t)

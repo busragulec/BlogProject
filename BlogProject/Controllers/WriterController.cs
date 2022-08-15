@@ -13,15 +13,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-
 namespace BlogProject.Controllers
 {
-  
     public class WriterController : Controller
     {
-        
         WriterManager wm = new WriterManager(new EfWriterRepository());
         [Authorize]
+
         public IActionResult Index()
         {
             var usermail = User.Identity.Name;
@@ -31,10 +29,12 @@ namespace BlogProject.Controllers
             ViewBag.v2 = writerName;
             return View();
         }
+
         public IActionResult WriterProfile()
         {
             return View();
         }
+
         public IActionResult WriterMail()
         {
             return View();
@@ -58,25 +58,24 @@ namespace BlogProject.Controllers
         public IActionResult WriterEditProfile()
         {
             Context c = new Context();
-            var usermail = User.Identity.Name;          
+            var usermail = User.Identity.Name;
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
             var writervalues = wm.TGetById(writerID);
             return View(writervalues);
         }
-
         [HttpPost]
         public IActionResult WriterEditProfile(Writer p)
         {
             WriterValidator wl = new WriterValidator();
             ValidationResult results = wl.Validate(p);
-            if(results.IsValid)
+            if (results.IsValid)
             {
                 wm.TUpdate(p);
                 return RedirectToAction("Index", "Dashboard");
             }
             else
             {
-                foreach(var item in results.Errors)
+                foreach (var item in results.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
@@ -94,7 +93,7 @@ namespace BlogProject.Controllers
         public IActionResult WriterAdd(AddProfileImage p)
         {
             Writer w = new Writer();
-            if(p.WriterImage != null)
+            if (p.WriterImage != null)
             {
                 var extension = Path.GetExtension(p.WriterImage.FileName);
                 var newimagename = Guid.NewGuid() + extension;

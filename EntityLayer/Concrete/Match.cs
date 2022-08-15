@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-   public class Match
+    public class Match
     {
         [Key]
         public int MatchID { get; set; }
@@ -17,6 +17,6 @@ namespace EntityLayer.Concrete
         public string Stadium { get; set; }
         public Team HomeTeam { get; set; }
         public Team GuestTeam { get; set; }
-       
+
     }
 }

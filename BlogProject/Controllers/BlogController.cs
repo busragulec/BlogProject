@@ -39,6 +39,7 @@ namespace BlogProject.Controllers
             var values = bm.GetListWithCategoryByWriterBm(writerID);
             return View(values);
         }
+
         [HttpGet]
         public IActionResult BlogAdd()
         {
@@ -52,6 +53,7 @@ namespace BlogProject.Controllers
             ViewBag.cv = categoryvalues;
             return View();
         }
+
         [HttpPost]
         public IActionResult BlogAdd(Blog p)
         {
@@ -84,6 +86,7 @@ namespace BlogProject.Controllers
             bm.TDelete(blogvalue);
             return RedirectToAction("BlogListByWriter");
         }
+
         [HttpGet]
         public IActionResult EditBlog(int id)
         {
@@ -97,6 +100,7 @@ namespace BlogProject.Controllers
             ViewBag.cv = categoryvalues;
             return View(blogvalue);
         }
+
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {

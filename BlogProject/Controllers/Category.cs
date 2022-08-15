@@ -6,7 +6,6 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.EntitiyFramework;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace BlogProject.Controllers
 {
     public class Category : Controller

@@ -4,8 +4,6 @@
     ViewData["Title"] = "InBox";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-
-
 @using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
 {
     <div class="page-header">
@@ -15,7 +13,6 @@
                 <i class="mdi mdi-message menu-icon"></i>
             </span>GELEN KUTUSU
         </h3>
-
     </div>
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
@@ -30,17 +27,17 @@
                         </tr>
                         @foreach (var item in Model)
                         {
-                    <tr>
-                        <th>@item.MessageID</th>
-                        <td>@item.Subject</td>
-                        <td>@item.SenderUser.WriterName</td>
+                            <tr>
+                                <th>@item.MessageID</th>
+                                <td>@item.Subject</td>
+                                <td>@item.SenderUser.WriterName</td>
 
-                        <td>
-                            @(((DateTime)
+                                <td>
+                                    @(((DateTime)
                                 item.MessageDate).ToString("dd-MMM-yyyy"))
-                        </td>
-                        <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-warning">Mesajı Aç</a></td>
-                    </tr>
+                                </td>
+                                <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-warning">Mesajı Aç</a></td>
+                            </tr>
                         }
                     </table>
                 </form>
@@ -48,33 +45,3 @@
         </div>
     </div>
 }
-
-
-
-@*<h1>Gelen Kutusu</h1>
-<table class="table table-bordered">
-    <tr>
-        <th>~~</th>
-        <th>KONU</th>
-        <th>GÖNDEREN</th>
-        <th>TARİH</th>
-
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <th>@item.MessageID</th>
-            <td>@item.Subject</td>
-            <td>@item.SenderUser.WriterName</td>
-
-            <td>
-                @(((DateTime)
-                                item.MessageDate).ToString("dd-MMM-yyyy"))
-            </td>
-            <td><a href="/Message/MessageDetails/@item.MessageID" class="btn btn-warning">Mesajı Aç</a></td>
-        </tr>
-    }
-</table>*@
-
-
-

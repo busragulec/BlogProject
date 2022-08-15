@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-   public class Message2Manager : IMessage2Service
+    public class Message2Manager : IMessage2Service
     {
         IMessage2Dal _messageDal;
 

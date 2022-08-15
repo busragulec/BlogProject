@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
@@ -12,7 +11,6 @@
                 <i class="mdi mdi-home"></i>
             </span> KONTROL PANELİ
         </h3>
-        
     </div>
     <div class="row">
         <div class="col-md-4 stretch-card grid-margin">
@@ -23,7 +21,6 @@
                         Blog Sayısı <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h3>
                     <h1 class="mb-5">@ViewBag.v1</h1>
-                    @*<h6 class="card-text">Asp.Net Core 5.0 Blog Projesi</h6>*@
                 </div>
             </div>
         </div>
@@ -35,7 +32,6 @@
                         Sizin Blog Sayınız <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h3>
                     <h1 class="mb-5">@ViewBag.v2</h1>
-                    
                 </div>
             </div>
         </div>
@@ -47,15 +43,11 @@
                         Kategori Sayısı <i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h3>
                     <h1 class="mb-5">@ViewBag.v3</h1>
-                
                 </div>
             </div>
         </div>
     </div>
     @await Component.InvokeAsync("BlogListDashboard")
-
     @await Component.InvokeAsync("WriterAboutOnDashboard")
-
-    @*@await Component.InvokeAsync("CategoryListDashboard")*@
 </body>
 </html>

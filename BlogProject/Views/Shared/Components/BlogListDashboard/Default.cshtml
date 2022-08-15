@@ -1,6 +1,5 @@
 ﻿@using EntityLayer.Concrete
 @model List<Blog>
-
 <div class="row">
     <div class="col-12 grid-margin">
         <div class="card">
@@ -14,30 +13,29 @@
                                 <th> BAŞLIK </th>
                                 <th> KATEGORİ </th>
                                 <th> TARİH </th>
-                               
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    <img src="@item.BlogImages" class="mr-2" alt="image"> 
-                                  </td>  
+                                <tr>
                                     <td>
-                                    @item.BlogTitle
-                                </td>
-                                <td>
-                                    <label class="badge badge-gradient-success">@item.Category.CategoryName</label>
-                                </td>
-                                <td>
-                                    @(((DateTime)
+                                        <img src="@item.BlogImages" class="mr-2" alt="image">
+                                    </td>
+                                    <td>
+                                        @item.BlogTitle
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-gradient-success">@item.Category.CategoryName</label>
+                                    </td>
+                                    <td>
+                                        @(((DateTime)
                                 item.BlogCreateDate).ToString("dd-MMM-yyyy"))
-                                </td>
-                                <td>
-                                    <a href="/Blog/BlogReadAll/@item.BlogID" class="btn btn-dark">Detaylar</a>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        <a href="/Blog/BlogReadAll/@item.BlogID" class="btn btn-dark">Detaylar</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

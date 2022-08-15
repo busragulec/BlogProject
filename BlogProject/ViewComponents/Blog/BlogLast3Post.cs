@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace BlogProject.ViewComponents.Blog
 {
     public class BlogLast3Post : ViewComponent

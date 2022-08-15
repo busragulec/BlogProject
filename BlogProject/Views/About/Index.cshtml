@@ -4,66 +4,38 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
-
 <!DOCTYPE html>
 <html lang="zxx">
 
 <body>
-   
-        <div class="container">
-            <br />
-            <br />
-            <h3 class="tittle">Hakkımızda</h3>
-            <div class="row inner-sec">
-                
-                <div class="col-lg-12 left-blog-info-w3layouts-agileits text-center">
-                    <div class="blog-grid-top">
+    <div class="container">
+        <br />
+        <br />
+        <h3 class="tittle">Hakkımızda</h3>
+        <div class="row inner-sec">
 
-                        <div class="center-orientation">
-                            <a href="single.html">
-                                <img src="~/BlogTema/images/b5.jpg" class="img-fluid" alt="">
-                            </a>
-                        </div>
-                        <br />
-                        <h3>
-                            Biz Kimiz & Visyonumuz & Mizyonumuz
-                        </h3>
-                        <br />
-                        @foreach (var item in Model)
-                        {
-                            <p>
-                                @item.AboutDetails1
-                            </p>
-                        }
+            <div class="col-lg-12 left-blog-info-w3layouts-agileits text-center">
+                <div class="blog-grid-top">
 
+                    <div class="center-orientation">
+                        <a href="single.html">
+                            <img src="~/BlogTema/images/b5.jpg" class="img-fluid" alt="">
+                        </a>
                     </div>
-                    
+                    <br />
+                    <h3>
+                        Biz Kimiz & Visyonumuz & Mizyonumuz
+                    </h3>
+                    <br />
+                    @foreach (var item in Model)
+                    {
+                        <p>
+                            @item.AboutDetails1
+                        </p>
+                    }
                 </div>
-                @*<aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
-                    <div class="right-blog-info text-left">
-                        <div class="tech-btm">
-                            <img src="~/BlogTema/images/banner1.jpg" class="img-fluid" alt="">
-                        </div>
-                        <h4>
-                            Mail Bültenine Abone Olun
-                        </h4>
-
-                        @await Html.PartialAsync("~/Views/NewsLetter/SubscribeMail.cshtml")
-                        <div class="tech-btm">
-
-                            @await Component.InvokeAsync("WriterLastBlog")
-                        </div>
-                        <br />
-                        <br />
-                        @await Html.PartialAsync("~/Views/About/SocialMediaAbout.cshtml")
-
-
-
-                    </div>
-
-                </aside>*@
             </div>
         </div>
- 
+    </div>
 </body>
 </html>

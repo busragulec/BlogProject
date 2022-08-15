@@ -3,8 +3,6 @@
     ViewData["Title"] = "EditBlog";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-
-
 @using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
 {
     <div class="page-header">
@@ -14,62 +12,38 @@
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
             </span>BLOG DÜZENLEME SAYFASI
         </h3>
-
     </div>
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <form class="forms-sample">
-
-                    @Html.Label("Blog ID")
+                    @Html.Label("BLOG ID")
                     @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
                     <br />
-                    @Html.Label("Blog Başlığı")
+                    @Html.Label("BLOG BAŞLIĞI")
                     @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
                     <br />
-                    @Html.Label("Blog Thumnail Url")
-                    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control" })
+                    <div class="form-group">
+                        <label>BLOG GÖRSELİ</label>
+                        <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            @Html.TextBoxFor(x => x.BlogImages, new { @class = "form-control" })
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Resim Seç</button>
+                            </span>
+                        </div>
+                    </div>
                     <br />
-                    @Html.Label("Blog Görseli")
-                    @Html.TextBoxFor(x => x.BlogImages, new { @class = "form-control" })
-                    <br />
-                    @Html.Label("Blog Kategori")
+                    @Html.Label("BLOG KATEGORİ")
                     @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
                     <br />
-                    @Html.Label("Blog İçeriği")
+                    @Html.Label("BLOG İÇERİĞİ")
                     @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control" })
                     <br />
                     <button class="btn btn-success">Güncelle</button>
-
                 </form>
             </div>
         </div>
     </div>
 }
-
-
-@*<h1>Blog Düzenleme Sayfası</h1>
-<br />
-@using (Html.BeginForm("EditBlog", "Blog", FormMethod.Post))
-{
-    @Html.Label("Blog ID")
-    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
-    <br />
-    @Html.Label("Blog Başlığı")
-    @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
-    <br />
-    @Html.Label("Blog Thumnail Url")
-    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control" })
-    <br />
-    @Html.Label("Blog Görseli")
-    @Html.TextBoxFor(x => x.BlogImages, new { @class = "form-control" })
-    <br />
-    @Html.Label("Blog Kategori")
-    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
-    <br />
-    @Html.Label("Blog İçeriği")
-    @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control" })
-    <br />
-    <button class="btn btn-success">Güncelle</button>
-}*@
 
