@@ -55,12 +55,14 @@ namespace BlogProject.Controllers
             return PartialView();
         }
         [HttpGet]
-        public IActionResult WriterEditProfile()
+        public IActionResult WriterEditProfile(int writerId)
         {
             Context c = new Context();
             var usermail = User.Identity.Name;
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
             var writervalues = wm.TGetById(writerID);
+            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
             return View(writervalues);
         }
         [HttpPost]

@@ -32,16 +32,18 @@ namespace BlogProject.Controllers
             var values = bm.GetBlogByID(id);
             return View(values);
         }
-        public IActionResult BlogListByWriter()
+        public IActionResult BlogListByWriter(int writerId)
         {
             var usermail = User.Identity.Name;
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
             var values = bm.GetListWithCategoryByWriterBm(writerID);
+            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
             return View(values);
         }
 
         [HttpGet]
-        public IActionResult BlogAdd()
+        public IActionResult BlogAdd(int writerId)
         {
 
             List<SelectListItem> categoryvalues = (from x in cm.GetList()
@@ -51,6 +53,8 @@ namespace BlogProject.Controllers
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
             ViewBag.cv = categoryvalues;
+            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
             return View();
         }
 
@@ -88,7 +92,7 @@ namespace BlogProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditBlog(int id)
+        public IActionResult EditBlog(int id, int writerId)
         {
             var blogvalue = bm.TGetById(id);
             List<SelectListItem> categoryvalues = (from x in cm.GetList()
@@ -98,6 +102,8 @@ namespace BlogProject.Controllers
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
             ViewBag.cv = categoryvalues;
+            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
             return View(blogvalue);
         }
 

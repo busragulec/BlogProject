@@ -1,4 +1,5 @@
 ﻿using BlogProject.Models;
+using DataAccessLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -33,8 +34,10 @@ namespace BlogProject.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Test()
+        public IActionResult Test(int writerId)
         {
+            Context c = new Context();
+            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
             return View();
         }
     }
