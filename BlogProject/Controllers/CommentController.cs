@@ -29,7 +29,7 @@ namespace BlogProject.Controllers
         {
             p.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.CommentStatus = true;
-            p.BlogID = 1;
+            p.BlogID = 23;
             cm.CommentAdd(p);
             return PartialView();
         }

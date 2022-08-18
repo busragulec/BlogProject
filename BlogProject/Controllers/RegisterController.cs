@@ -30,7 +30,7 @@ namespace BlogProject.Controllers
             if (result.IsValid)
             {
                 p.WriterStatus = true;
-                p.WriterAbout = "Deneme Test";
+                p.WriterAbout = "Kendiniz hakkında bilgi verebilirsiniz...";
                 wm.TAdd(p);
                 return RedirectToAction("Index", "Dashboard");
             }
