@@ -18,6 +18,7 @@ namespace BlogProject.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+        Context c = new Context();
         [Authorize]
 
         public IActionResult Index()
@@ -61,27 +62,54 @@ namespace BlogProject.Controllers
             var usermail = User.Identity.Name;
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
             var writervalues = wm.TGetById(writerID);
-            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
-            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
+
+            if (c.Blogs.Where(x => x.WriterID == writerId).Count() <= 0)
+            {
+                ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+                ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
+            }
+            else
+            {
+                ViewBag.Username = c.Blogs.Join(c.Writers,
+                blogsPoint => blogsPoint.WriterID,
+                writerPoint => writerPoint.WriterID,
+                (blogsPoint, writerPoint) => new { blogsPoint, writerPoint }
+                ).Where(y => y.blogsPoint.WriterID == writerID).FirstOrDefault().writerPoint.WriterName;
+
+                ViewBag.image = c.Blogs.Join(c.Writers,
+                     blogsPoint => blogsPoint.WriterID,
+                     writerPoint => writerPoint.WriterID,
+                     (blogsPoint, writerPoint) => new { blogsPoint, writerPoint }
+                     ).Where(y => y.blogsPoint.WriterID == writerID).FirstOrDefault().writerPoint.WriterImage;
+            }
+
             return View(writervalues);
         }
         [HttpPost]
         public IActionResult WriterEditProfile(Writer p)
         {
-            WriterValidator wl = new WriterValidator();
-            ValidationResult results = wl.Validate(p);
-            if (results.IsValid)
+            //var usermail = User.Identity.Name;
+            //var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+            //WriterValidator wl = new WriterValidator();
+            //ValidationResult results = wl.Validate(p);
+            //p.WriterID = writerID;
+            //if (results.IsValid)
+            if (p.WriterID > 0)
             {
                 wm.TUpdate(p);
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Dashboard", new { writerId = p.WriterID });
             }
             else
             {
-                foreach (var item in results.Errors)
-                {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-                }
+                ModelState.AddModelError("WriterId", "Kullanıcı bilgileri alınamadı");
             }
+            //else
+            //{
+            //    foreach (var item in results.Errors)
+            //    {
+            //        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+            //    }
+            //}
             return View();
         }
         [AllowAnonymous]

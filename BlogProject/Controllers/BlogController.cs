@@ -37,6 +37,7 @@ namespace BlogProject.Controllers
             var usermail = User.Identity.Name;
             var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
             var values = bm.GetListWithCategoryByWriterBm(writerID);
+
             ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
             ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
             return View(values);
@@ -53,8 +54,24 @@ namespace BlogProject.Controllers
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
             ViewBag.cv = categoryvalues;
-            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
-            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
+            //ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+            //ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
+            var usermail = User.Identity.Name;
+            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+            var values = bm.GetListWithCategoryByWriterBm(writerID);
+
+            ViewBag.Username = c.Blogs.Join(c.Writers,
+                blogsPoint => blogsPoint.WriterID,
+                writerPoint => writerPoint.WriterID,
+                (blogsPoint, writerPoint) => new { blogsPoint, writerPoint }
+                ).Where(y => y.blogsPoint.WriterID == writerID).FirstOrDefault().writerPoint.WriterName;
+
+            ViewBag.image = c.Blogs.Join(c.Writers,
+                 blogsPoint => blogsPoint.WriterID,
+                 writerPoint => writerPoint.WriterID,
+                 (blogsPoint, writerPoint) => new { blogsPoint, writerPoint }
+                 ).Where(y => y.blogsPoint.WriterID == writerID).FirstOrDefault().writerPoint.WriterImage;
+
             return View();
         }
 
@@ -73,7 +90,7 @@ namespace BlogProject.Controllers
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 p.WriterID = writerID;
                 bm.TAdd(p);
-                return RedirectToAction("BlogListByWriter", "Blog");
+                return RedirectToAction("BlogListByWriter", "Blog", new { writerId = writerID });
             }
             else
             {
@@ -86,9 +103,12 @@ namespace BlogProject.Controllers
         }
         public IActionResult DeleteBlog(int id)
         {
+            var usermail = User.Identity.Name;
+            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+
             var blogvalue = bm.TGetById(id);
             bm.TDelete(blogvalue);
-            return RedirectToAction("BlogListByWriter");
+            return RedirectToAction("BlogListByWriter", new { writerId = writerID });
         }
 
         [HttpGet]
@@ -102,8 +122,25 @@ namespace BlogProject.Controllers
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
             ViewBag.cv = categoryvalues;
-            ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
-            ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
+            var usermail = User.Identity.Name;
+            var writerID = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+            var values = bm.GetListWithCategoryByWriterBm(writerID);
+
+
+            //ViewBag.Username = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterName;
+            // ViewBag.image = c.Writers.Where(x => x.WriterID == writerId).FirstOrDefault().WriterImage;
+            ViewBag.Username = c.Blogs.Join(c.Writers,
+                 blogsPoint => blogsPoint.WriterID,
+                 writerPoint => writerPoint.WriterID,
+                 (blogsPoint, writerPoint) => new { blogsPoint, writerPoint }
+                 ).Where(y => y.blogsPoint.WriterID == writerID).FirstOrDefault().writerPoint.WriterName;
+
+            ViewBag.image = c.Blogs.Join(c.Writers,
+                 blogsPoint => blogsPoint.WriterID,
+                 writerPoint => writerPoint.WriterID,
+                 (blogsPoint, writerPoint) => new { blogsPoint, writerPoint }
+                 ).Where(y => y.blogsPoint.WriterID == writerID).FirstOrDefault().writerPoint.WriterImage;
+
             return View(blogvalue);
         }
 
@@ -117,7 +154,7 @@ namespace BlogProject.Controllers
             p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.BlogStatus = true;
             bm.TUpdate(p);
-            return RedirectToAction("BlogListByWriter");
+            return RedirectToAction("BlogListByWriter", new { writerId = writerID });
         }
     }
 }
